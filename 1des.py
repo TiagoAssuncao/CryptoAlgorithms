@@ -1,9 +1,13 @@
 """DES implementation"""
 
-keys = []
+keys = [][]
 
-def makeKeys():
-    pass
+def makeKeys(key):
+    key = key & 0b0011111111
+    keylist = [(key & (1 << i)) >> i for i in reversed(range(8))]
+
+    subkey[0:9] = key[1:10]
+    subkey[10] = key[0]
 
 def encrypt():
     pass
