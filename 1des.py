@@ -28,9 +28,10 @@ def appfuction(roundpack, current_round):
     add_round_key = [0]*int(plain_text_length/2)
     current_key = keys[current_round]
 
-    for i in rigth_text:
+    for i in range(0, rigth_text.__len__()):
         add_round_key[i] = rigth_text[i] ^ current_key[i]
 
+    # print("saida: {0}, rigth: {1}, key: {2}.".format(add_round_key, rigth_text, current_key))
     return add_round_key
 
 def doRound(roundpack, current_round):
@@ -40,10 +41,9 @@ def doRound(roundpack, current_round):
     rigth_text_fuction = appfuction(roundpack, current_round)
     final_rigth_text = [0]*int(plain_text_length/2)
 
-    for i in rigth_text_fuction:
+    for i in range(0, rigth_text_fuction.__len__()):
         final_rigth_text[i] = rigth_text_fuction[i] ^ left_text[i]
 
-    print(current_round, ": ", final_left_text, final_rigth_text)
     return final_left_text, final_rigth_text
 
 def make_round_pack(plain_text_list):
@@ -77,13 +77,13 @@ def decrypt(crypt_text):
 
 if __name__ == "__main__":
     plain_text = 0b10010011
-    key = 0b0101010101
+    key = 0b1101101011
     makeKeys(key)
     plain_text = makeLists(plain_text, plain_text_length)
-    print("Plain Text: ", plain_text)
-
+    temp = plain_text
     cryp_message = encrypt(plain_text)
     plain_text = decrypt(cryp_message)
 
+    print("Plain Text: ", temp)
     print("Crypt: ", cryp_message)
-    print("Plain: ", plain_text)
+    print("Decrypt: ", plain_text)
