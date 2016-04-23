@@ -1,9 +1,29 @@
 """DES implementation"""
 import numpy
+import random
 
 numberKeys = 6
 keys = [[0 for x in range(8)] for x in range(numberKeys)]
 plain_text_length = 8
+i_permut = random.sample([0,1,2,3,4,5,6,7], 8)
+
+def permut_rever():
+    rever = [None]*plain_text_length
+    for i, elem in enumerate(i_permut):
+        rever[elem] = i
+
+    return rever
+
+rever = permut_rever()
+
+def permut(roundpack, table_permut):
+    text = roundpack[0] + roundpack[1]
+    text_permuted = [None]*plain_text_length
+
+    for i, elem in enumerate(table_permut):
+        text_permuted[i] = text[elem]
+
+    return [text_permuted[0:int((plain_text_length)/2)],  text_permuted[int(plain_text_length/2):plain_text_length]]
 
 def swap_keys(roundpack):
     return roundpack[1], roundpack[0]
@@ -59,20 +79,24 @@ def make_round_pack(plain_text_list):
 
 def encrypt(plain_text):
     roundpack = make_round_pack(plain_text)
+    roundpack = permut(roundpack, i_permut)
 
     for i in range(0, numberKeys):
         roundpack = doRound(roundpack, i)
 
     roundpack = swap_keys(roundpack)
+    roundpack = permut(roundpack, rever)
     return roundpack[0] + roundpack[1]
 
 def decrypt(crypt_text):
     roundpack = make_round_pack(crypt_text)
+    roundpack = permut(roundpack, i_permut)
 
     for i in reversed(range(0, numberKeys)):
         roundpack = doRound(roundpack, i)
 
     roundpack = swap_keys(roundpack)
+    roundpack = permut(roundpack, rever)
     return roundpack[0] + roundpack[1]
 
 if __name__ == "__main__":
