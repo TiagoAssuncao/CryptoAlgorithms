@@ -2,10 +2,14 @@
 import numpy
 import random
 
-numberKeys = 6
-keys = [[0 for x in range(8)] for x in range(numberKeys)]
-plain_text_length = 8
-i_permut = random.sample([0,1,2,3,4,5,6,7], 8)
+numberKeys = 16
+keys = [[0 for x in range(62)] for x in range(numberKeys)]
+plain_text_length = 64
+
+def create_table_permut(table_length):
+    table_permut = [i for i in range(table_length)]
+    create_table_permut = random.sample(table_permut, table_length)
+    return create_table_permut
 
 def permut_rever():
     rever = [None]*plain_text_length
@@ -14,16 +18,22 @@ def permut_rever():
 
     return rever
 
+# Permut to plain and cripted text
+i_permut = create_table_permut(plain_text_length)
 rever = permut_rever()
+
+# Permut to keys
+big_key = create_table_permut(plain_text_length + 2)
+small_key = create_table_permut(plain_text_length)
 
 def permut(roundpack, table_permut):
     text = roundpack[0] + roundpack[1]
-    text_permuted = [None]*plain_text_length
+    text_permuted = [None]*table_permut.__len__()
 
     for i, elem in enumerate(table_permut):
         text_permuted[i] = text[elem]
 
-    return [text_permuted[0:int((plain_text_length)/2)],  text_permuted[int(plain_text_length/2):plain_text_length]]
+    return [text_permuted[0:int((table_permut.__len__())/2)],  text_permuted[int(table_permut.__len__()/2):table_permut.__len__()]]
 
 def swap_keys(roundpack):
     return roundpack[1], roundpack[0]
@@ -33,12 +43,12 @@ def makeLists(arg, length):
     return arglist
 
 def makeKeys(key):
-    key = key & 0b0011111111
-    keyList = makeLists(key, 8)
+    key = key & 0b0011111111111111111111111111111111111111111111111111111111111111
+    keyList = makeLists(key, 62)
     for i in range(0, numberKeys):
-        subkey = [None]*8
-        subkey[0:7] = keyList[1:8]
-        subkey[7] = keyList[0]
+        subkey = [None]*62
+        subkey[0:61] = keyList[1:62]
+        subkey[61] = keyList[0]
         keys[i] = subkey
         keyList = subkey
 
@@ -100,14 +110,13 @@ def decrypt(crypt_text):
     return roundpack[0] + roundpack[1]
 
 if __name__ == "__main__":
-    plain_text = 0b10010011
-    key = 0b1101101011
+    plain_text = 0b1111111100100110010011001001100100110010011001001100100110010011
+    key = 0b1101101011111100110110101110110101110110101110110101110110101001
+
     makeKeys(key)
     plain_text = makeLists(plain_text, plain_text_length)
     temp = plain_text
     cryp_message = encrypt(plain_text)
     plain_text = decrypt(cryp_message)
 
-    print("Plain Text: ", temp)
-    print("Crypt: ", cryp_message)
-    print("Decrypt: ", plain_text)
+    assert(temp == plain_text)
