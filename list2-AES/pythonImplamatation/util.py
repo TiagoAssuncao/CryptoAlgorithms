@@ -42,6 +42,16 @@ def make_word_xor(first_word, second_word):
 
     return word_xor_applied
 
+def apply_rcon(word, current_round):
+    first_byte = word[0]
+    rconj = Rcon[current_round]
+    rconj_array = int_to_bit_array(rconj)
+
+    rcon_xor = make_byte_xor(first_byte, rconj_array)
+    word[0] = rcon_xor
+
+    return word
+
 def make_byte_xor(first_byte, second_byte):
     byte_xor_applied = []
 

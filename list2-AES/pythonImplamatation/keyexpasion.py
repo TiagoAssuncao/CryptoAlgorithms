@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from util import sub_word, rot_word, make_xor, Rcon
+from util import sub_word, rot_word, make_xor, Rcon, apply_rcon
 
 
 def init_expanded_key(key):
@@ -18,7 +18,7 @@ def init_expanded_key(key):
 def apply_fuction_g(last_word, current_round):
     last_word = rot_word(last_word)
     last_word = sub_word(last_word)
-    last_word = apply_rcon(last_word)
+    last_word = apply_rcon(last_word, current_round)
 
     return last_word
 
