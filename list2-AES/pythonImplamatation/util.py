@@ -34,6 +34,16 @@ def rot_word(word):
 
     return word
 
+def adding_id_missing(key):
+    key_length = len(key)
+    number_missing = 128 - key_length
+
+    if number_missing != 0:
+        for i in range(0, number_missing):
+            key = insert_and_shift(key)
+
+    return key
+
 def make_word_xor(first_word, second_word):
     word_xor_applied = []
 
