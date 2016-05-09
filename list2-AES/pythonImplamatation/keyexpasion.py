@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from util import sub_word, rot_word, make_xor, Rcon, apply_rcon
+from util import sub_word, rot_word, make_xor, apply_rcon
 
 
 def init_expanded_key(key):
@@ -34,5 +34,7 @@ def key_expasion(key):
 
         expanded_key[i] = make_word_xor(
             expanded_key[i - 4],
-            expanded_key[last_word]
+            last_word
         )
+
+    return expanded_key
