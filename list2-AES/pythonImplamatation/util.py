@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import sboxes
+from sboxes import *
 
 Rcon = (
     0x00, 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40,
@@ -19,6 +19,15 @@ def sub_word(word):
         sub_word_apply[i] = Sbox[left][rigth]
 
     return sub_word_apply
+
+def array_bits_to_int(array):
+    array_length = len(array)
+    a = 0
+
+    for i in reversed(range(0, array_length)):
+        a += array[i] << i
+
+    return a
 
 def rot_word(word):
     word[0], word[1], word[2], word[3] = word[1], word[2], word[3], word[0]
