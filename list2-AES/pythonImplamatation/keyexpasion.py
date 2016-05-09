@@ -32,7 +32,7 @@ def key_expasion(key):
             current_round = i/4
             last_word = apply_fuction_g(last_word, current_round)
 
-        expanded_key[i] = make_xor(
+        expanded_key[i] = make_word_xor(
             expanded_key[i - 4],
             expanded_key[last_word]
         )
