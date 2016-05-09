@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 from util import sub_word, rot_word, make_xor, apply_rcon
 
-
 def init_expanded_key(key):
     expanded_key = []
 
@@ -22,7 +21,7 @@ def apply_fuction_g(last_word, current_round):
 
     return last_word
 
-def key_expasion(key):
+def key_expansion(key):
     expanded_key = init_expanded_key(key)
 
     for i in range(4, 44):
