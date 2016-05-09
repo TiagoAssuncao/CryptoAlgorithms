@@ -1,7 +1,11 @@
-# Exercises of cryp list one
+# Many cript algorithms
 
-## Create a encrypt algorithm(DES)
+We implemented:
 
-## Find the multiplicative inverse
+* AES algorithm 128 bits
 
-## Build a calculator in finite field GF(2^8)
+* Create a encrypt algorithm(DES)
+
+* Find the multiplicative inverse
+
+* Build a calculator in finite field GF(2^8)
