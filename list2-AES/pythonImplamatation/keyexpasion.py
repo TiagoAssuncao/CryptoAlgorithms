@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from util import sub_word, rot_word
+from util import sub_word, rot_word, make_xor
 
 
 def init_expanded_key(key):

@@ -33,3 +33,18 @@ def rot_word(word):
     word[0], word[1], word[2], word[3] = word[1], word[2], word[3], word[0]
 
     return word
+
+def make_xor(first_word, second_word):
+    word_xor_applied = []
+
+    for i in range(0, 4):
+        first_byte = first_word[i]
+        second_byte = second_word[i]
+        byte_xor_applied = []
+
+        for j in range(0, 8):
+            byte_xor_applied[j] = first_byte[j] ^ second_byte[j]
+
+        word_xor_applied[i] = byte_xor_applied
+
+    return word_xor_applied
