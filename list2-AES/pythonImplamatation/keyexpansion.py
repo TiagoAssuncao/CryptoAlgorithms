@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-from util import sub_word, rot_word, make_xor, apply_rcon, int_to_bit_array,
-    adding_id_missing, separe_keys_in_bytes
+from util import sub_word, rot_word, make_word_xor, apply_rcon, int_to_bit_array
+from util import adding_id_missing, separe_keys_in_bytes
 
 def init_expanded_key(key_int):
     expanded_key = []

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-
 """AES Implamatation."""
+from keyexpansion import key_expansion
 
 
 def main():

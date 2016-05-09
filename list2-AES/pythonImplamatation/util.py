@@ -66,7 +66,7 @@ def make_word_xor(first_word, second_word):
 
 def int_to_bit_array(number):
     number_length = number.bit_length()
-    bit_array = [(arg & (1 << i)) >> i for i in reversed(range(number_length))]
+    bit_array = [(number & (1 << i)) >> i for i in reversed(range(number_length))]
 
     return bit_array
 
