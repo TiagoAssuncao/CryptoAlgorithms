@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from util import sub_word, rot_word, make_xor
+from util import sub_word, rot_word, make_xor, Rcon
 
 
 def init_expanded_key(key):
@@ -15,11 +15,22 @@ def init_expanded_key(key):
 
     return expanded_key
 
+def apply_fuction_g(last_word, current_round):
+    last_word = rot_word(last_word)
+    last_word = sub_word(last_word)
+    last_word = apply_rcon(last_word)
+
+    return last_word
+
 def key_expasion(key):
     expanded_key = init_expanded_key(key)
 
     for i in range(4, 44):
         last_word = expanded_key[i - 1]
+
+        if (i%4) == 0:
+            current_round = i/4
+            last_word = apply_fuction_g(last_word, current_round)
 
         expanded_key[i] = make_xor(
             expanded_key[i - 4],
