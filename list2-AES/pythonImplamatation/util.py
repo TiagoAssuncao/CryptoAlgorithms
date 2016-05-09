@@ -34,6 +34,11 @@ def rot_word(word):
 
     return word
 
+def insert_and_shift(key):
+    """Adding value 0 in a position 0"""
+    key.insert(0, 0)
+    return key
+
 def adding_id_missing(key):
     key_length = len(key)
     number_missing = 128 - key_length
