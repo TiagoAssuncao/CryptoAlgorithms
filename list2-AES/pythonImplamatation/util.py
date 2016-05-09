@@ -42,6 +42,12 @@ def make_word_xor(first_word, second_word):
 
     return word_xor_applied
 
+def int_to_bit_array(number):
+    number_length = number.bit_length()
+    bit_array = [(arg & (1 << i)) >> i for i in reversed(range(number_length))]
+
+    return bit_array
+
 def apply_rcon(word, current_round):
     first_byte = word[0]
     rconj = Rcon[current_round]
