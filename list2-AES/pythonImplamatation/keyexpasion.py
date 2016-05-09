@@ -17,3 +17,11 @@ def init_expanded_key(key):
 
 def key_expasion(key):
     expanded_key = init_expanded_key(key)
+
+    for i in range(4, 44):
+        last_word = expanded_key[i - 1]
+
+        expanded_key[i] = make_xor(
+            expanded_key[i - 4],
+            expanded_key[last_word]
+        )
