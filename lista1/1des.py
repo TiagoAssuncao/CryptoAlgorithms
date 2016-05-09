@@ -1,15 +1,16 @@
 """DES implementation"""
-import numpy
 import random
 
 numberKeys = 16
 keys = [[0 for x in range(62)] for x in range(numberKeys)]
 plain_text_length = 64
 
+
 def create_table_permut(table_length):
     table_permut = [i for i in range(table_length)]
     create_table_permut = random.sample(table_permut, table_length)
     return create_table_permut
+
 
 def permut_rever():
     rever = [None]*plain_text_length
