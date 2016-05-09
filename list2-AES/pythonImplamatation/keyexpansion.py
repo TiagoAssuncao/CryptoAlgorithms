@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 from util import sub_word, rot_word, make_xor, apply_rcon, int_to_bit_array,
-    adding_id_missing
+    adding_id_missing, separe_keys_in_bytes
 
 def init_expanded_key(key_int):
     expanded_key = []
     key = int_to_bit_array(key_int)
     key = adding_id_missing(key)
+    key = separe_keys_in_bytes(key)
 
     for i in range(0, 4):
         expanded_key[i] = [

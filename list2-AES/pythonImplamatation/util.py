@@ -39,6 +39,13 @@ def insert_and_shift(key):
     key.insert(0, 0)
     return key
 
+def separe_keys_in_bytes(key):
+    key_separed = []
+    for i in range(0, 16):
+        key_separed[i] = key[i*8:i*8 + 8]
+
+    return key_separed
+
 def adding_id_missing(key):
     key_length = len(key)
     number_missing = 128 - key_length
