@@ -9,12 +9,12 @@ def init_expanded_key(key_int):
     key = separe_keys_in_bytes(key)
 
     for i in range(0, 4):
-        expanded_key[i] = [
+        expanded_key.append([
             key[4*i],
             key[4*i + 1],
             key[4*i + 2],
             key[4*i + 3]
-        ]
+        ])
 
     return expanded_key
 
@@ -32,7 +32,7 @@ def key_expansion(key):
         last_word = expanded_key[i - 1]
 
         if (i%4) == 0:
-            current_round = i/4
+            current_round = int(i/4)
             last_word = apply_fuction_g(last_word, current_round)
 
         expanded_key[i] = make_word_xor(

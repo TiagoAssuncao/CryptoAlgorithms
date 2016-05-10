@@ -16,7 +16,7 @@ def sub_word(word):
         left = array_bits_to_int(current_byte[0:4])
         rigth = array_bits_to_int(current_byte[4:8])
 
-        sub_word_apply[i] = Sbox[left][rigth]
+        sub_word_apply.append(Sbox[(left+1)*(rigth+1)])
 
     return sub_word_apply
 
@@ -42,7 +42,7 @@ def insert_and_shift(key):
 def separe_keys_in_bytes(key):
     key_separed = []
     for i in range(0, 16):
-        key_separed[i] = key[i*8:i*8 + 8]
+        key_separed.append(key[i*8:i*8 + 8])
 
     return key_separed
 
@@ -84,6 +84,7 @@ def make_byte_xor(first_byte, second_byte):
     byte_xor_applied = []
 
     for j in range(0, 8):
+        print("Primeiro: ", first_byte, second_byte)
         byte_xor_applied[j] = first_byte[j] ^ second_byte[j]
 
     return byte_xor_applied
