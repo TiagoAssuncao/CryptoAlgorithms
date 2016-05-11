@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from util import sub_word, rot_word, make_word_xor, apply_rcon, int_to_bit_array
 from util import adding_id_missing, separe_keys_in_bytes
+import copy
 
 def init_expanded_key(key_int):
     expanded_key = []
@@ -20,7 +21,9 @@ def init_expanded_key(key_int):
 
 def apply_fuction_g(last_word, current_round):
     last_word = rot_word(last_word)
+    print("rot: ", last_word)
     last_word = sub_word(last_word)
+    print("sub: ", last_word)
     last_word = apply_rcon(last_word, current_round)
 
     return last_word
@@ -29,7 +32,7 @@ def key_expansion(key):
     expanded_key = init_expanded_key(key)
 
     for i in range(4, 44):
-        last_word = expanded_key[i - 1]
+        last_word = copy.copy(expanded_key[i - 1])
 
         if (i%4) == 0:
             current_round = int(i/4)
