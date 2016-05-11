@@ -43,7 +43,10 @@ def parse_to_matrix(array):
     k = 0
     for i in range(16):
         for j in range(16):
-                matrix[i][j] = array[k]
-                k += 1
+            matrix[i][j] = array[k]
+            k += 1
 
     return matrix
+
+SboxArray = parse_to_matrix(Sbox)
+InvSboxArray = parse_to_matrix(InvSbox)

@@ -17,7 +17,7 @@ def sub_word(word):
         rigth = array_bits_to_int(current_byte[4:8])
         print("lr: ", left, rigth)
 
-        int_number_sbox = Sbox[(left+1)*(rigth+1) - 1]
+        int_number_sbox = SboxArray[left][rigth]
         print("sbox: ", int_number_sbox)
         ara = int_to_bit_array(int_number_sbox)
         ara = adding_id_missing(ara, 8)
