@@ -17,9 +17,10 @@ def sub_word(word):
         rigth = array_bits_to_int(current_byte[4:8])
 
         int_number_sbox = Sbox[(left+1)*(rigth+1)]
-        array_number_sbox = int_to_bit_array(int_number_sbox)
+        ara = int_to_bit_array(int_number_sbox)
+        ara = adding_id_missing(ara, 8)
 
-        sub_word_apply.append(array_number_sbox)
+        sub_word_apply.append(ara)
 
     return sub_word_apply
 
@@ -70,6 +71,7 @@ def apply_rcon(word, current_round):
     first_byte = word[0]
     rconj = Rcon[current_round]
     rconj_array = int_to_bit_array(rconj)
+    rconj_array = adding_id_missing(rconj_array, 8)
 
     rcon_xor = make_byte_xor(first_byte, rconj_array)
     word[0] = rcon_xor
