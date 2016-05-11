@@ -82,8 +82,7 @@ def make_byte_xor(first_byte, second_byte):
     byte_xor_applied = []
 
     for j in range(0, 8):
-        print("Primeiro: ", first_byte, second_byte)
-        byte_xor_applied[j] = first_byte[j] ^ second_byte[j]
+        byte_xor_applied.append(first_byte[j] ^ second_byte[j])
 
     return byte_xor_applied
 
@@ -91,6 +90,6 @@ def make_word_xor(first_word, second_word):
     word_xor_applied = []
 
     for i in range(0, 4):
-        word_xor_applied[i] = make_byte_xor(first_word[i], second_word[i])
+        word_xor_applied.append(make_byte_xor(first_word[i], second_word[i]))
 
     return word_xor_applied

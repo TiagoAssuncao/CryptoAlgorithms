@@ -7,7 +7,6 @@ def init_expanded_key(key_int):
     key = int_to_bit_array(key_int)
     key = adding_id_missing(key, 128)
     key = separe_keys_in_bytes(key)
-    # print(key)
 
     for i in range(0, 4):
         expanded_key.append([
@@ -22,7 +21,6 @@ def init_expanded_key(key_int):
 def apply_fuction_g(last_word, current_round):
     last_word = rot_word(last_word)
     last_word = sub_word(last_word)
-    # print(last_word)
     last_word = apply_rcon(last_word, current_round)
 
     return last_word
@@ -37,9 +35,9 @@ def key_expansion(key):
             current_round = int(i/4)
             last_word = apply_fuction_g(last_word, current_round)
 
-        expanded_key[i] = make_word_xor(
+        expanded_key.append(make_word_xor(
             expanded_key[i - 4],
             last_word
-        )
+        ))
 
     return expanded_key
