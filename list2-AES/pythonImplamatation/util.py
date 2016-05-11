@@ -49,9 +49,9 @@ def separe_keys_in_bytes(key):
 
     return key_separed
 
-def adding_id_missing(key):
+def adding_id_missing(key, total_numbers):
     key_length = len(key)
-    number_missing = 128 - key_length
+    number_missing = total_numbers - key_length
 
     if number_missing != 0:
         for i in range(0, number_missing):
