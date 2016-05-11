@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Algorithm to encryption AES."""
 from util import int_to_bit_array, adding_id_missing, separe_keys_in_bytes
+from util import make_phrase_xor
 def sub_bytes():
     pass
 
@@ -10,8 +11,9 @@ def shift_rows():
 def mix_columns():
     pass
 
-def add_round_plain():
-    pass
+def add_round_plain(plain, key):
+    applied_key = make_phrase_xor(plain, key)
+    return applied_key
 
 def init_plain_text(plain_int):
     plain_final = []
@@ -30,7 +32,6 @@ def init_plain_text(plain_int):
 
     return plain_final
 
-def encryption(plain_int):
+def encryption(plain_int, expanded_key):
    plain = init_plain_text(plain_int)
-   print(plain)
-   initial_transformation = add_round_plain(plain)
+   initial_transformation = add_round_plain(plain, expanded_key[0])
