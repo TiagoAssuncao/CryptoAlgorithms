@@ -16,7 +16,10 @@ def sub_word(word):
         left = array_bits_to_int(current_byte[0:4])
         rigth = array_bits_to_int(current_byte[4:8])
 
-        sub_word_apply.append(Sbox[(left+1)*(rigth+1)])
+        int_number_sbox = Sbox[(left+1)*(rigth+1)]
+        array_number_sbox = int_to_bit_array(int_number_sbox)
+
+        sub_word_apply.append(array_number_sbox)
 
     return sub_word_apply
 
@@ -56,13 +59,6 @@ def adding_id_missing(key):
 
     return key
 
-def make_word_xor(first_word, second_word):
-    word_xor_applied = []
-
-    for i in range(0, 4):
-        word_xor_applied[i] = make_byte_xor(first_word[i], second_word[i])
-
-    return word_xor_applied
 
 def int_to_bit_array(number):
     number_length = number.bit_length()
@@ -88,3 +84,11 @@ def make_byte_xor(first_byte, second_byte):
         byte_xor_applied[j] = first_byte[j] ^ second_byte[j]
 
     return byte_xor_applied
+
+def make_word_xor(first_word, second_word):
+    word_xor_applied = []
+
+    for i in range(0, 4):
+        word_xor_applied[i] = make_byte_xor(first_word[i], second_word[i])
+
+    return word_xor_applied
