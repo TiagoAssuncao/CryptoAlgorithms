@@ -21,9 +21,7 @@ def init_expanded_key(key_int):
 
 def apply_fuction_g(last_word, current_round):
     last_word = rot_word(last_word)
-    print("rot: ", last_word)
     last_word = sub_word(last_word)
-    print("sub: ", last_word)
     last_word = apply_rcon(last_word, current_round)
 
     return last_word
