@@ -15,8 +15,10 @@ def sub_word(word):
         current_byte = word[i]
         left = array_bits_to_int(current_byte[0:4])
         rigth = array_bits_to_int(current_byte[4:8])
+        print("lr: ", left, rigth)
 
         int_number_sbox = Sbox[(left+1)*(rigth+1) - 1]
+        print("sbox: ", int_number_sbox)
         ara = int_to_bit_array(int_number_sbox)
         ara = adding_id_missing(ara, 8)
 
@@ -26,11 +28,10 @@ def sub_word(word):
 
 def array_bits_to_int(array):
     array_length = len(array)
-    print(array_length)
     a = 0
 
     for i in reversed(range(0, array_length)):
-        a += array[i] << i
+        a += array[array_length - i - 1] << i
 
     return a
 
