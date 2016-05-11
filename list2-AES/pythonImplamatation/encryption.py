@@ -14,11 +14,23 @@ def add_round_plain():
     pass
 
 def init_plain_text(plain_int):
+    plain_final = []
+
     plain = int_to_bit_array(plain_int)
     plain = adding_id_missing(plain, 128)
     plain = separe_keys_in_bytes(plain)
 
-    return plain
+    for i in range(0, 4):
+        plain_final.append([
+            plain[4*i],
+            plain[4*i + 1],
+            plain[4*i + 2],
+            plain[4*i + 3]
+        ])
+
+    return plain_final
 
 def encryption(plain_int):
    plain = init_plain_text(plain_int)
+   print(plain)
+   initial_transformation = add_round_plain(plain)

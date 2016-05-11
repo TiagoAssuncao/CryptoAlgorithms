@@ -81,7 +81,7 @@ def apply_rcon(word, current_round):
 def make_byte_xor(first_byte, second_byte):
     byte_xor_applied = []
 
-    for j in range(0, 8):
+    for j in range(8):
         byte_xor_applied.append(first_byte[j] ^ second_byte[j])
 
     return byte_xor_applied
@@ -89,7 +89,18 @@ def make_byte_xor(first_byte, second_byte):
 def make_word_xor(first_word, second_word):
     word_xor_applied = []
 
-    for i in range(0, 4):
+    for i in range(4):
         word_xor_applied.append(make_byte_xor(first_word[i], second_word[i]))
 
     return word_xor_applied
+
+def make_phrase_xor(first_phrase, second_phrase):
+    phrase_xor_applied = []
+
+    for i in range(16):
+        phrase_xor_applied.append(make_word_xor(
+            first_phrase[i],
+            second_phrase[i]
+        ))
+
+    return phrase_xor_applied
