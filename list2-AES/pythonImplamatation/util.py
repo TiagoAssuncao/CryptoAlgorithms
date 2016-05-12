@@ -36,6 +36,20 @@ def sum_in_gf2_8(a, b):
     c = a ^ b
     return c
 
+def makeVectorMult(a):
+    vmult = [a,0,0,0,0,0,0,0]
+    for i in range(1, 8):
+        var = vmult[i-1]
+        if (var & 128) == 128:
+            var = ((var - 128 )<< 1)
+            var = var ^ 27
+        else:
+            var = var << 1
+
+        vmult[i] = var
+
+    return vmult
+
 def mult_gf2_8(a, b):
     vmult = makeVectorMult(a)
     ids = getIndex(b)
