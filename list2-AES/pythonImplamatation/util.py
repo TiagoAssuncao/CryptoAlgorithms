@@ -24,6 +24,16 @@ def sub_word(word):
 
     return sub_word_apply
 
+def transform_to_int(text):
+    word = []
+    for i in range(4):
+        byte = []
+        current_word = text[i]
+        for i in range(4):
+            byte.append(array_bits_to_int(current_word[j]))
+
+        word.append(byte)
+
 def sub_phrase(phrase):
     phrase_sub = []
 
