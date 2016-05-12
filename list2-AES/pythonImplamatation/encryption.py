@@ -51,6 +51,4 @@ def encryption(plain_int, expanded_key):
    plain = init_plain_text(plain_int)
    initial_transformation = add_round_plain(plain, expanded_key[0:4])
    sub_byte = sub_bytes(initial_transformation)
-   print(sub_byte)
    shift = shift_rows(sub_byte)
-   print(shift)

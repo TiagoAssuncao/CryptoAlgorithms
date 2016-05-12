@@ -38,6 +38,13 @@ InvSbox = (
     0x17, 0x2B, 0x04, 0x7E, 0xBA, 0x77, 0xD6, 0x26, 0xE1, 0x69, 0x14, 0x63, 0x55, 0x21, 0x0C, 0x7D,
 )
 
+MixState = [
+    [2, 3, 1, 1],
+    [1, 2, 3, 1],
+    [1, 1, 2, 3],
+    [3, 1, 1, 2]
+]
+
 def parse_to_matrix(array):
     matrix = [[0 for x in range(16)] for y in range(16)]
     k = 0
