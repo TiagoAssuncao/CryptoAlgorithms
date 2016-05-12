@@ -17,12 +17,20 @@ def sub_word(word):
         rigth = array_bits_to_int(current_byte[4:8])
 
         int_number_sbox = SboxArray[left][rigth]
-        ara = int_to_bit_array(int_number_sbox)
-        ara = adding_id_missing(ara, 8)
+        array = int_to_bit_array(int_number_sbox)
+        array = adding_id_missing(array, 8)
 
-        sub_word_apply.append(ara)
+        sub_word_apply.append(array)
 
     return sub_word_apply
+
+def sub_phrase(phrase):
+    phrase_sub = []
+
+    for i in range(4):
+        phrase_sub.append(sub_word(phrase[i]))
+
+    return phrase_sub
 
 def array_bits_to_int(array):
     array_length = len(array)
