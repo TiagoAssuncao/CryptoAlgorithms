@@ -23,8 +23,8 @@ def shift_rows(shift):
      s[3][1], s[3][2], s[3][3] = copy_0_1, copy_1_2, copy_2_3
      return s
 
-def mix_columns():
-    pass
+def mix_columns(text):
+
 
 def add_round_plain(plain, key):
     applied_key = make_phrase_xor(plain, key)
@@ -52,3 +52,4 @@ def encryption(plain_int, expanded_key):
    initial_transformation = add_round_plain(plain, expanded_key[0:4])
    sub_byte = sub_bytes(initial_transformation)
    shift = shift_rows(sub_byte)
+   mixied = mix_columns(shift)

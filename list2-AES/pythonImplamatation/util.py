@@ -32,6 +32,10 @@ def sub_phrase(phrase):
 
     return phrase_sub
 
+def sum_in_gf2_8(a, b):
+    c = a ^ b
+    return c
+
 def array_bits_to_int(array):
     array_length = len(array)
     a = 0
