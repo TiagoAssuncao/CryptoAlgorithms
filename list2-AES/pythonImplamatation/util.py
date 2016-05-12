@@ -97,7 +97,7 @@ def make_word_xor(first_word, second_word):
 def make_phrase_xor(first_phrase, second_phrase):
     phrase_xor_applied = []
 
-    for i in range(16):
+    for i in range(4):
         phrase_xor_applied.append(make_word_xor(
             first_phrase[i],
             second_phrase[i]

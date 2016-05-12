@@ -34,4 +34,4 @@ def init_plain_text(plain_int):
 
 def encryption(plain_int, expanded_key):
    plain = init_plain_text(plain_int)
-   initial_transformation = add_round_plain(plain, expanded_key[0])
+   initial_transformation = add_round_plain(plain, expanded_key[0:4])
