@@ -36,6 +36,16 @@ def sum_in_gf2_8(a, b):
     c = a ^ b
     return c
 
+def mult_gf2_8(a, b):
+    vmult = makeVectorMult(a)
+    ids = getIndex(b)
+    values = []
+
+    result = 0
+    for i in ids:
+        result = result ^ vmult[i]
+    return result
+
 def array_bits_to_int(array):
     array_length = len(array)
     a = 0
