@@ -50,6 +50,18 @@ def makeVectorMult(a):
 
     return vmult
 
+def getIndex(a):
+    v = [1, 2, 4, 8, 16, 32, 64, 128]
+    ids = []
+    cont = 0
+
+    for i in v:
+        if(a & i) == i:
+            ids.append(cont)
+
+        cont = cont + 1
+    return ids
+
 def mult_gf2_8(a, b):
     vmult = makeVectorMult(a)
     ids = getIndex(b)
