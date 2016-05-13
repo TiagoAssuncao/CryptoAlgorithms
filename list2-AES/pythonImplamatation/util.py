@@ -199,4 +199,5 @@ def convert_text_in_number(text):
             for bit in byte:
                 text_bits.append(bit)
 
+    text_bits = array_bits_to_int(text_bits)
     return text_bits
