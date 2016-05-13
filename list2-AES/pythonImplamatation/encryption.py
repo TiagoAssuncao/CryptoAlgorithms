@@ -48,9 +48,15 @@ def init_plain_text(plain_int):
 
     return plain_final
 
-def encryption(plain_int, expanded_key):
-   plain = init_plain_text(plain_int)
-   initial_transformation = add_round_plain(plain, expanded_key[0:4])
+def do_round(text, key):
    sub_byte = sub_bytes(initial_transformation)
    shift = shift_rows(sub_byte)
    mixied = mix_columns(shift)
+   add_round_key = add_round_plain(mixied, key)
+
+   return add_round_key
+
+def encryption(plain_int, expanded_key):
+   plain = init_plain_text(plain_int)
+   initial_transformation = add_round_plain(plain, expanded_key[0:4])
+
