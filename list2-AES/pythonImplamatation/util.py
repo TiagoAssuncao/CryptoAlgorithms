@@ -24,15 +24,35 @@ def sub_word(word):
 
     return sub_word_apply
 
+def mult_column(word):
+    word_in_numbers = get_word_numbers(word)
+    response = []
+
+    for j in range(4):
+        current_mix = MixState[j]
+        mult_array = []
+
+        for i in range(4):
+            mult_array.append(mult_gf2_8(word_in_numbers[i], current_mix[i]))
+
+        sum_result = 0
+        for i in range(1, 4):
+            sum_result += sum_in_gf2_8(mult_array[i-1], mult_array[i])
+
+        response.append(sum_result)
+
+    response_array = []
+    for i in range(4):
+        response_array.append(int_to_bit_array[i])
+
+    return response_array
+
 def transform_to_int(text):
     word = []
     for i in range(4):
-        byte = []
         current_word = text[i]
-        for i in range(4):
-            byte.append(array_bits_to_int(current_word[j]))
-
-        word.append(byte)
+        current_word = mult_column(current_word)
+        word.append(current_word)
 
 def sub_phrase(phrase):
     phrase_sub = []
