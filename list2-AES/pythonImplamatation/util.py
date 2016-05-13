@@ -42,15 +42,15 @@ def mult_column(word):
         for i in range(4):
             mult_array.append(mult_gf2_8(word_in_numbers[i], current_mix[i]))
 
-        sum_result = 0
+        sum_result = mult_array[0]
         for i in range(1, 4):
-            sum_result += sum_in_gf2_8(mult_array[i-1], mult_array[i])
+            sum_result = sum_in_gf2_8(sum_result, mult_array[i])
 
         response.append(sum_result)
 
     response_array = []
     for i in range(4):
-        response_array.append(int_to_bit_array(response[i]))
+        response_array.append(adding_id_missing(int_to_bit_array(response[i]), 8))
 
     return response_array
 
