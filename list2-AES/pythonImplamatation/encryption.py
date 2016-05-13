@@ -48,10 +48,15 @@ def init_plain_text(plain_int):
 
     return plain_final
 
-def do_round(text, key):
-   sub_byte = sub_bytes(initial_transformation)
+def do_round(text, key, current_round):
+   sub_byte = sub_bytes(text)
    shift = shift_rows(sub_byte)
-   mixied = mix_columns(shift)
+
+   if current_round != 10:
+       mixied = mix_columns(shift)
+   else:
+       mixied = shift
+
    add_round_key = add_round_plain(mixied, key)
 
    return add_round_key
@@ -59,4 +64,10 @@ def do_round(text, key):
 def encryption(plain_int, expanded_key):
    plain = init_plain_text(plain_int)
    initial_transformation = add_round_plain(plain, expanded_key[0:4])
+   text = initial_transformation
 
+   for i in range(1, 11):
+      text = do_round(text, expanded_key[i*4:i*4 + 4], i)
+      print(i, text)
+
+   return text
