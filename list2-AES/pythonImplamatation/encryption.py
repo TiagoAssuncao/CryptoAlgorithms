@@ -2,6 +2,7 @@
 """Algorithm to encryption AES."""
 from util import int_to_bit_array, adding_id_missing, separe_keys_in_bytes
 from util import make_phrase_xor, sub_phrase, transform_to_int
+from util import convert_text_in_number
 import copy
 
 def sub_bytes(phrase):
@@ -68,6 +69,6 @@ def encryption(plain_int, expanded_key):
 
    for i in range(1, 11):
       text = do_round(text, expanded_key[i*4:i*4 + 4], i)
-      print(i, text)
 
+   text = convert_text_in_number(text)
    return text

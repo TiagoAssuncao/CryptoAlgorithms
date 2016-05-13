@@ -191,3 +191,12 @@ def make_phrase_xor(first_phrase, second_phrase):
         ))
 
     return phrase_xor_applied
+
+def convert_text_in_number(text):
+    text_bits = []
+    for word  in text:
+        for byte in word:
+            for bit in byte:
+                text_bits.append(bit)
+
+    return text_bits
