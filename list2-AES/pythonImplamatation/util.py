@@ -24,6 +24,14 @@ def sub_word(word):
 
     return sub_word_apply
 
+def get_word_numbers(word):
+    word_in_numbers = []
+    for i in range(4):
+        word_in_numbers.append(array_bits_to_int(word[i]))
+        word_in_numbers[i] = adding_id_missing(word_in_numbers[i], 8)
+
+    return word_in_numbers
+
 def mult_column(word):
     word_in_numbers = get_word_numbers(word)
     response = []
