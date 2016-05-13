@@ -28,7 +28,6 @@ def get_word_numbers(word):
     word_in_numbers = []
     for i in range(4):
         word_in_numbers.append(array_bits_to_int(word[i]))
-        word_in_numbers[i] = adding_id_missing(word_in_numbers[i], 8)
 
     return word_in_numbers
 
@@ -51,7 +50,7 @@ def mult_column(word):
 
     response_array = []
     for i in range(4):
-        response_array.append(int_to_bit_array[i])
+        response_array.append(int_to_bit_array(response[i]))
 
     return response_array
 
@@ -61,6 +60,8 @@ def transform_to_int(text):
         current_word = text[i]
         current_word = mult_column(current_word)
         word.append(current_word)
+
+    return word
 
 def sub_phrase(phrase):
     phrase_sub = []

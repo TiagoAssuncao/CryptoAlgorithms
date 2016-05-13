@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Algorithm to encryption AES."""
 from util import int_to_bit_array, adding_id_missing, separe_keys_in_bytes
-from util import make_phrase_xor, sub_phrase
+from util import make_phrase_xor, sub_phrase, transform_to_int
 import copy
 
 def sub_bytes(phrase):
@@ -25,7 +25,7 @@ def shift_rows(shift):
 
 def mix_columns(text):
     text = transform_to_int(text)
-
+    return text
 
 def add_round_plain(plain, key):
     applied_key = make_phrase_xor(plain, key)
