@@ -2,6 +2,7 @@
 """Decryption AES Implamatation."""
 from util import make_phrase_xor, int_to_bit_array, adding_id_missing
 from util import separe_keys_in_bytes, sub_phrase, transform_to_int
+from util import convert_text_in_number
 import copy
 
 def inv_shift_rows(shift):
@@ -60,4 +61,6 @@ def decryption(text, expanded_key):
 
     for i in reversed(range(10)):
         text = do_inv_round(text, expanded_key[i*4:i*4+4], i)
-    print(text)
+
+    text = convert_text_in_number(text)
+    return text

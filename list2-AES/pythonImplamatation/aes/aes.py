@@ -11,5 +11,9 @@ def main():
     ciphertext = encryption(plain, expanded_key)
     decrypted = decryption(ciphertext, expanded_key)
 
+    if plain == decrypted:
+        print("O criptador funcionou corretamente")
+    else:
+        print("O criptador não funcionou")
 if __name__ == "__main__":
         main()
