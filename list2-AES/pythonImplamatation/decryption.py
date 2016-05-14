@@ -42,16 +42,22 @@ def init_cipher_text(plain_int):
 
     return plain_final
 
-def do_inv_round(text, key):
-    shift_text = inv_shift_rows(initial_transformation)
+def do_inv_round(text, key, current_round):
+    shift_text = inv_shift_rows(text)
     inv_sub = inv_sub_bytes(shift_text)
     add_round = add_round_cipher(inv_sub, key)
-    inv_mix = inv_mix_columns(add_round)
+    if current_round != 0:
+        inv_mix = inv_mix_columns(add_round)
+    else:
+        inv_mix = add_round
 
     return inv_mix
 
 def decryption(text, expanded_key):
     text = init_cipher_text(text)
     initial_transformation = add_round_cipher(text, expanded_key[40:44])
+    text = initial_transformation
 
-    print(inv_mix)
+    for i in reversed(range(10)):
+        text = do_inv_round(text, expanded_key[i*4:i*4+4], i)
+    print(text)
