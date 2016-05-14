@@ -6,7 +6,7 @@ from util import convert_text_in_number
 import copy
 
 def sub_bytes(phrase):
-    phrase_sub = sub_phrase(phrase)
+    phrase_sub = sub_phrase(phrase, 0)
     return phrase_sub
 
 def shift_rows(shift):

@@ -8,7 +8,7 @@ Rcon = (
     0xD4, 0xB3, 0x7D, 0xFA, 0xEF, 0xC5, 0x91, 0x39,
 )
 
-def sub_word(word):
+def sub_word(word, method):
     sub_word_apply = []
 
     for i in range(0, 4):
@@ -16,7 +16,11 @@ def sub_word(word):
         left = array_bits_to_int(current_byte[0:4])
         rigth = array_bits_to_int(current_byte[4:8])
 
-        int_number_sbox = SboxArray[left][rigth]
+        if method == 0:
+            int_number_sbox = SboxArray[left][rigth]
+        else:
+            int_number_sbox = InvSboxArray[left][rigth]
+
         array = int_to_bit_array(int_number_sbox)
         array = adding_id_missing(array, 8)
 
@@ -63,11 +67,11 @@ def transform_to_int(text):
 
     return word
 
-def sub_phrase(phrase):
+def sub_phrase(phrase, method):
     phrase_sub = []
 
     for i in range(4):
-        phrase_sub.append(sub_word(phrase[i]))
+        phrase_sub.append(sub_word(phrase[i], method))
 
     return phrase_sub
 
