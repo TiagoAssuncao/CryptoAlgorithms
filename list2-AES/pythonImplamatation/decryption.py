@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 """Decryption AES Implamatation."""
+from util import make_phrase_xor, int_to_bit_array, adding_id_missing
+from util import separe_keys_in_bytes
 
 def inv_shift_rows():
     pass
@@ -22,6 +24,9 @@ def inv_sub_bytes(shift):
      s[3][1], s[3][2], s[3][3] = copy_0_1, copy_1_2, copy_2_3
      return s
 
+def add_round_cipher(plain, key):
+    applied_key = make_phrase_xor(plain, key)
+    return applied_key
 
 def init_cipher_text(plain_int):
     plain_final = []
@@ -43,5 +48,5 @@ def init_cipher_text(plain_int):
 
 def decryption(text):
     text = init_cipher_text(text)
+    initial_transformation = add_round_cipher(shift_text, expanded_key[0:4])
     shift_text = inv_shift_rows(text)
-    initial_transformation = add_round_plain(plain, expanded_key[0:4])
