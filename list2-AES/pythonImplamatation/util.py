@@ -35,12 +35,15 @@ def get_word_numbers(word):
 
     return word_in_numbers
 
-def mult_column(word):
+def mult_column(word, method):
     word_in_numbers = get_word_numbers(word)
     response = []
 
     for j in range(4):
-        current_mix = MixState[j]
+        if method == 0:
+            current_mix = MixState[j]
+        else:
+            current_mix = InvMixState[j]
         mult_array = []
 
         for i in range(4):
@@ -58,11 +61,11 @@ def mult_column(word):
 
     return response_array
 
-def transform_to_int(text):
+def transform_to_int(text, method):
     word = []
     for i in range(4):
         current_word = text[i]
-        current_word = mult_column(current_word)
+        current_word = mult_column(current_word, method)
         word.append(current_word)
 
     return word

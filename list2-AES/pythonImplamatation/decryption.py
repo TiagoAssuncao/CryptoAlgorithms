@@ -13,8 +13,9 @@ def inv_shift_rows(shift):
 
      return s
 
-def inv_mix_columns():
-    pass
+def inv_mix_columns(text):
+    inv_mix = transform_to_int(text, 1)
+    return inv_mix
 
 def inv_sub_bytes(phrase):
     phrase_sub = sub_phrase(phrase, 1)
@@ -48,4 +49,5 @@ def decryption(text, expanded_key):
     shift_text = inv_shift_rows(initial_transformation)
     inv_sub = inv_sub_bytes(shift_text)
     add_round = add_round_cipher(inv_sub, expanded_key[36:40])
+    inv_mix = inv_mix_columns(add_round)
     print(add_round)

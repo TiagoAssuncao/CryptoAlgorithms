@@ -25,7 +25,7 @@ def shift_rows(shift):
      return s
 
 def mix_columns(text):
-    text = transform_to_int(text)
+    text = transform_to_int(text, 0)
     return text
 
 def add_round_plain(plain, key):
