@@ -7,7 +7,7 @@ def main():
     plain = 0x00112233445566778899AABBCCDDEEFF
     expanded_key = key_expansion(key)
     ciphertext = encryption(plain, expanded_key)
-    print(hex(ciphertext))
+    decrypted = decryption(ciphertext, expanded_key)
 
 if __name__ == "__main__":
         main()
