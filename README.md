@@ -20,5 +20,7 @@ We implemented:
 
 * CFB that uses the AES algorithm of 128 bits
 
+* CTR that uses the DES of 64 bits
+
 Contact us with you have any question:
 ### tiago@sof2u.com
