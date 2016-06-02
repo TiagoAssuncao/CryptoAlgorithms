@@ -1,5 +1,16 @@
 #!/usr/bin/env python3
 
+def ksa(key):
+    length = key.__len__()
+    stream = range(256)
+    j=0
+
+    for i in range(256):
+        j = (j + stream[i] + key[i % length]) % 256
+        stream[i], stream[j] = stream[j], stream[i]
+
+    return stream
+
 def converted_key(key):
     converted_key = []
     for i in key:
