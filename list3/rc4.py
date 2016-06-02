@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-def prga(text):
+def prga(stream):
     i = j = 0
     while True:
         i = (i + 1) % 256
@@ -12,7 +12,7 @@ def prga(text):
 
 def ksa(key):
     length = key.__len__()
-    stream = range(256)
+    stream = [x for x in range(256)]
     j=0
 
     for i in range(256):
@@ -30,13 +30,13 @@ def convert_to_int(key):
 
 def rc4(key, plain):
     converted_key = convert_to_int(key)
-    initilize = ksa(key)
+    initilize = ksa(converted_key)
     stream = prga(initilize)
 
     return stream
 
 if __name__ == "__main__":
-    key = "supersecretkey"
+    key = "key"
     plain = "plain"
 
     stream = rc4(key, plain)
