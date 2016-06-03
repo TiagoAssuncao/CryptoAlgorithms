@@ -20,7 +20,7 @@ def testing(k, q, n, a):
         return False
 
     for j in range(k):
-        resp = ((a**(2*j*q))%n)
+        resp = ((a**((2**j)*q))%n)
         if resp == n - 1:
             return False
 
@@ -34,5 +34,15 @@ if __name__ == "__main__":
     n = int(input("Digite o numero n a ser verificado: "))
 
     k, q = find_k_q(n)
-    is_composite = testing(k, q, n, 10)
-    print (is_composite)
+    is_composite = False
+    for a in range(1, n):
+        resp = testing(k, q, n, a)
+        if resp == True:
+            print(a)
+            is_composite = True
+
+    if is_composite:
+        print("O número é composto")
+    else:
+        prob = (0.25)**(n-1)
+        print("O número é primo com a probabilidade: ", prob)
