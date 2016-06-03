@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Calcules if a number is prime from the method od Miller Rabin"""
 import sys
-import random
+
 
 def find_k_q(n):
     for q in range(3, sys.maxsize, 2):
@@ -14,20 +14,18 @@ def find_k_q(n):
                 return k, q
             k += 1
 
+
 def testing(k, q, n, a):
-    resp = ((a**q)%n)
+    resp = ((a ** q) % n)
     if resp == 1:
         return False
 
     for j in range(k):
-        resp = ((a**((2**j)*q))%n)
+        resp = ((a ** ((2 ** j) * q)) % n)
         if resp == n - 1:
             return False
 
     return True
-
-
-
 
 
 if __name__ == "__main__":
@@ -37,7 +35,7 @@ if __name__ == "__main__":
     is_composite = False
     for a in range(1, n):
         resp = testing(k, q, n, a)
-        if resp == True:
+        if resp is True:
             print(a)
             is_composite = True
 
