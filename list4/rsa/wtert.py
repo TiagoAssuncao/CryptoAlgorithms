@@ -44,7 +44,7 @@ def calculate_private_key(fi_n, e):
 
 def write_resp_file(text):
     f = open("resp", 'w')
-    f.write(str(text))
+    f.write(text)
     f.close()
 
 def get_file():
@@ -54,7 +54,7 @@ def get_file():
     f.close()
     return text
 
-def decript(PR):
+def decrip(PR):
     file_text = get_file()
     crip_text = int(file_text)
     crip_text = (crip_text**PR[0]) % PR[1]
@@ -85,7 +85,7 @@ if __name__ == "__main__":
     PU = [e, n]
     PR = [d, n]
 
-    option = input("Deseja criptografar ou descriptografar? (c/d): ")
+    option = input("Deseja criptografar ou descriptografar? (c/d)")
     if option == 'c':
         crip(PU)
     elif option == 'd':
