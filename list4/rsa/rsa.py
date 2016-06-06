@@ -24,4 +24,7 @@ if __name__ == "__main__":
     if e_is_valid(fi_n, e):
         print("O valor de e é valido")
     else:
-        raise ValueError("O valor de e é invalido")
+        while not e_is_valid(fi_n, e):
+            print("O valor de e é invalido")
+            e = int(input("Entre com uma chave VALIDA e"))
+        print("Este valor de chave é valido")
