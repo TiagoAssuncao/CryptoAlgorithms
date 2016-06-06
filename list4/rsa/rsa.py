@@ -3,6 +3,11 @@
 def e_is_valid(fi_n, e):
     pass
 
+def gcd(x, y):
+    while y!=0:
+        (x, y)=(y, x%y)
+    return x
+
 if __name__ == "__main__":
     p = int(input("Entre com o primo p"))
     q = int(input("Entre com o primo q"))
