@@ -39,23 +39,38 @@ def gcd(x, y):
 
 def calculate_private_key(fi_n, e):
     inverse_of_e = calculate_inverse(e, fi_n)
-    resp = inverse_of_e % fi_n
 
-    return resp
+    return inverse_of_e
+
+def decrip(PU):
+    file_text = get_file()
+    pass
+
+
+def crip(PU):
+    file_text = get_file()
+    pass
 
 if __name__ == "__main__":
-    p = int(input("Entre com o primo p"))
-    q = int(input("Entre com o primo q"))
-    e = int(input("Entre com a chave e"))
+    p = int(input("Entre com o primo p: "))
+    q = int(input("Entre com o primo q: "))
+    e = int(input("Entre com a chave e: "))
 
     n = p * q
     fi_n = (p-1)*(q-1)
-    if e_is_valid(fi_n, e):
-        print("O valor de e é valido")
-    else:
-        while not e_is_valid(fi_n, e):
-            print("O valor de e é invalido")
-            e = int(input("Entre com uma chave VALIDA e"))
-        print("Este valor de chave é valido")
+    while not e_is_valid(fi_n, e):
+        print("O valor de e é invalido")
+        e = int(input("Entre com uma chave VALIDA e"))
+    print("Este valor de chave é valido")
 
     d = calculate_private_key(fi_n, e)
+    PU = [e, n]
+    PR = [d, n]
+
+    option = input("Deseja criptografar ou descriptografar? (c/d)")
+    if option == 'c':
+        crip(PU)
+    elif option == 'd':
+        decript(PR)
+    else:
+        print("Opcao desconhecida")
