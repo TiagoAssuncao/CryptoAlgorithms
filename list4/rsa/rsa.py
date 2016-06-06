@@ -42,14 +42,26 @@ def calculate_private_key(fi_n, e):
 
     return inverse_of_e
 
-def decrip(PU):
+def get_file():
+    file_path = input("Digite o path do arquivo")
+    f = open(file_path, 'w')
+    text = f.read()
+    return text
+
+def decrip(PR):
     file_text = get_file()
-    pass
+    crip_text = int(file_text)
+    crip_text = (crip_text**PR[0]) % PR[1]
+
+    write_resp_file(crip_text)
 
 
 def crip(PU):
     file_text = get_file()
-    pass
+    crip_text = int(file_text)
+    crip_text = (crip_text**PU[0]) % PU[1]
+
+    write_resp_file(crip_text)
 
 if __name__ == "__main__":
     p = int(input("Entre com o primo p: "))
