@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 
 def e_is_valid(fi_n, e):
-    pass
+    result_gcd = gcd(fi_n, e)
+    if result_gcd == 1:
+        is_valid = True
+    else:
+        is_valid = False
+
+    return is_valid
 
 def gcd(x, y):
     while y!=0:
