@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Implementation of RSA algorithm"""
 
 def calculate_inverse(u, v):
     u1, u3, v1, v3, ite = 1, u, 0, v, 0
@@ -48,7 +49,7 @@ def write_resp_file(text):
     f.close()
 
 def get_file():
-    file_path = input("Digite o path do arquivo")
+    file_path = input("Digite o path do arquivo: ")
     f = open(file_path, 'r')
     text = f.read()
     f.close()
@@ -78,7 +79,7 @@ if __name__ == "__main__":
     fi_n = (p-1)*(q-1)
     while not e_is_valid(fi_n, e):
         print("O valor de e é invalido")
-        e = int(input("Entre com uma chave VALIDA e"))
+        e = int(input("Entre com uma chave VALIDA e: "))
     print("Este valor de chave é valido")
 
     d = calculate_private_key(fi_n, e)
