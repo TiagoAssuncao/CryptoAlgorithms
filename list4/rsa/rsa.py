@@ -1,5 +1,28 @@
 #!/usr/bin/env python3
 
+def calculate_inverse(u, v):
+    u1, u3, v1, v3, ite = 1, u, 0, v, 0
+
+    while(v3 != 0):
+        q = u3 // v3
+
+# t1 and t3 be temp variables to stores the values of coeficients and
+# swap with v1
+        t3 = u3 % v3
+        t1 = u1 + q * v1
+
+        u1, v1, u3, v3, ite = v1, t1, v3, t3, ite + 1
+
+    if(u3 != 1):
+        return 0
+
+    if((ite % 2) != 0):
+        inv = v - u1
+    else:
+        inv = u1
+
+    return inv
+
 def e_is_valid(fi_n, e):
     result_gcd = gcd(fi_n, e)
     if result_gcd == 1:
@@ -15,7 +38,7 @@ def gcd(x, y):
     return x
 
 def calculate_private_key(fi_n, e):
-    inverse_of_e = calculate_inverse(e)
+    inverse_of_e = calculate_inverse(e, fi_n)
     resp = inverse_of_e % fi_n
 
     return resp
