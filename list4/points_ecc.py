@@ -1,13 +1,21 @@
 #!/usr/bin/env python3
 """Implementation to list points on ecc."""
 
+def calculate_function(a, b, x, y):
+    """docstring for calculate_function"""
+    first_result = x**3
+    second_result = a*x
+
+    result = (first_result + second_result + b)
+    return result
+
 def find_points(a, b, p):
     """docstring for find_points.
 
     Search all points on given ecc.
     """
-    for i in range(p):
-        for j in range(p):
+    for x in range(p):
+        for y in range(p):
             
 
 
